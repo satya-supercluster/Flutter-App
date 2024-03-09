@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:meuseum_guide/pages/login.dart';
+import 'package:meuseum_guide/pages/signup.dart';
+import 'package:meuseum_guide/widgets/common/text_input.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +18,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const LoginPage(),
+      home: SignUpPage(),
     );
   }
 }

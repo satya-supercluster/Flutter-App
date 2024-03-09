@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:meuseum_guide/pages/signup.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -56,7 +57,7 @@ class _LoginPageState extends State<LoginPage> {
                         prefixIcon: Icon(Icons.person,size: 30,),
                         filled: true,
                         fillColor: Colors.white,
-                        hintText: 'Userame',
+                        hintText: 'Username',
                         contentPadding:
                             const EdgeInsets.symmetric(horizontal: 14.0, vertical: 8.0),
                         focusedBorder: OutlineInputBorder(
@@ -110,7 +111,8 @@ class _LoginPageState extends State<LoginPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children:[
                         ElevatedButton(
-                          child: Text('LogIn',style: TextStyle(color: Colors.white,fontSize: 22),),
+                          child: Text('LogIn',style: TextStyle(color: Colors.white,
+                          fontSize: 22),),
                           style:ElevatedButton.styleFrom(
                             backgroundColor: Color.fromARGB(97, 6, 35, 151),
                             foregroundColor: Colors.lightBlueAccent,
@@ -175,16 +177,18 @@ class _LoginPageState extends State<LoginPage> {
                           style: TextStyle(color: Colors.white),
                         ),
                         const SizedBox(width: 4),
-                        const Text(
-                          'Register now',
-                          style: TextStyle(
-                            color: Color.fromARGB(255, 5, 55, 105),
-                            fontWeight: FontWeight.bold,
+                        InkWell(
+                          onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => SignUpPage())),
+                          child: const Text(
+                            'Sign Up now',
+                            style: TextStyle(
+                              color: Color.fromARGB(255, 5, 55, 105),
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                       ],
-                    )
-                    
+                    ) 
                   ],
                 ),
               )
