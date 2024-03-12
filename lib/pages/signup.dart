@@ -1,10 +1,12 @@
 import 'dart:math';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:meuseum_guide/pages/login.dart';
+import 'package:meuseum_guide/services/user_auth/firebase_auth_implementation/firebase_auth_services.dart';
 import 'package:meuseum_guide/widgets/common/text_input.dart';
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -14,6 +16,15 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUpPage> {
+
+  final FirebaseAuthService _auth = FirebaseAuthService();
+
+  TextEditingController firstNameController=TextEditingController();
+  TextEditingController lastNameController=TextEditingController();
+  TextEditingController emailController=TextEditingController();
+  TextEditingController usernameController=TextEditingController();
+  TextEditingController passwordController=TextEditingController();
+  TextEditingController confirmPasswordController=TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,29 +60,29 @@ class _SignUpState extends State<SignUpPage> {
                     borderRadius: BorderRadius.only(topLeft: Radius.circular(50),topRight: Radius.circular(50))
                   ),
                   child:Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                         Expanded(
                           flex: 1,
-                          child: MyInputField(hint: "First Name")
+                          child: MyInputField(hintText: "First Name",controller: firstNameController,)
                         ),
                         SizedBox(width: 10,),
                         Expanded(
                           flex:1,
-                          child: MyInputField(hint: "Last Name")
+                          child: MyInputField(hintText: "Last Name",controller: lastNameController,)
                         ),
                       ],),
                       SizedBox(height:10),
-                      MyInputField(hint: "Email"),
+                      MyInputField(hintText: "Email",controller:emailController,),
                       SizedBox(height:10),
-                      MyInputField(hint: "Set Username"),
+                      MyInputField(hintText: "Set Username",controller: usernameController,),
                       SizedBox(height:10),
-                      MyInputField(hint: "Set Password"),
+                      MyInputField(hintText: "Set Password",isPasswordField: true,controller: passwordController,),
                       SizedBox(height:10),
-                      MyInputField(hint: "Confirm Password"),
+                      MyInputField(hintText: "Confirm Password",isPasswordField: true,controller: confirmPasswordController,),
                       SizedBox(height:10),
                       Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -84,7 +95,9 @@ class _SignUpState extends State<SignUpPage> {
                             foregroundColor: Colors.lightBlueAccent,
                             shadowColor: Colors.black,
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            _signUp();
+                          },
                         ),
                         ],
                       ),
@@ -164,5 +177,23 @@ class _SignUpState extends State<SignUpPage> {
         ) 
         ),
     );
+  }
+  void _signUp()async{
+    String username=usernameController.text;
+    String email=emailController.text;
+    String firstName=firstNameController.text;
+    String lastName=lastNameController.text;
+    String password=passwordController.text;
+
+    User? user =await _auth.signUpWithEmailAndPassword(email, password);
+
+    if(user!=null){
+      print("User created");
+    }
+    else{
+      print("Some error happend");
+    }
+
+
   }
 }

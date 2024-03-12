@@ -1,13 +1,14 @@
 
 import 'package:flutter/material.dart';
 import 'package:meuseum_guide/pages/signup.dart';
-
+import 'package:meuseum_guide/widgets/common/text_input.dart';
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
   @override
   State<LoginPage> createState() => _LoginPageState();
 }
+
 
 class _LoginPageState extends State<LoginPage> {
   var usernameController=TextEditingController();
@@ -44,69 +45,25 @@ class _LoginPageState extends State<LoginPage> {
                   borderRadius: BorderRadius.only(topLeft: Radius.circular(50),topRight: Radius.circular(50))
                 ),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    TextField(
-                      controller: usernameController,
-                      autofocus: false,
-                      style: TextStyle(
-                        fontSize: 22.0, 
-                        color: Colors.black87,
-                      ),
-                      decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.person,size: 30,),
-                        filled: true,
-                        fillColor: Colors.white,
-                        hintText: 'Username',
-                        contentPadding:
-                            const EdgeInsets.symmetric(horizontal: 14.0, vertical: 8.0),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white),
-                          borderRadius: BorderRadius.circular(25.7),
-                        ),
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white),
-                          borderRadius: BorderRadius.circular(25.7),
-                        ),
-                      ),
-                    ),
+                    MyInputField(hintText: "Username",controller: usernameController,),
                     SizedBox(height: 20,),
-                    TextField(
-                      controller: passwordController,
-                      cursorOpacityAnimates: false,
-                      autofocus: false,
-                      obscureText: true,
-                      style: TextStyle(
-                        fontSize: 22.0, 
-                        color: Colors.black87,
-                      ),
-                      decoration: InputDecoration(
-                        prefixIcon: Icon( Icons.password, size:30),
-                        filled: true,
-                        fillColor: Colors.white,
-                        hintText: 'Password',
-                        contentPadding:
-                            const EdgeInsets.symmetric(horizontal: 14.0, vertical: 8.0),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white),
-                          borderRadius: BorderRadius.circular(25.7),
-                        ),
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white),
-                          borderRadius: BorderRadius.circular(25.7),
-                        ),
-                      ),
-                    ),
+                    MyInputField(hintText: "Passwoird",controller: passwordController,isPasswordField: true,),
                     SizedBox(height:10),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        Text(
-                          'Forgot Password?',
-                          style: TextStyle(color: Colors.grey[900]),
+                        InkWell(
+                          onTap: (){},
+                          child: Text(
+                            'Forgot Password?',
+                            style: TextStyle(color: Colors.grey[900]),
+                          ),
                         ),
                       ],
                     ),
+                    SizedBox(height:10),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children:[

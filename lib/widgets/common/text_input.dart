@@ -1,15 +1,30 @@
 import 'package:flutter/material.dart';
 
-class MyInputField extends StatelessWidget {
-  final String hint;
+class MyInputField extends StatefulWidget {
+  final TextEditingController? controller;
+  final String hintText;
+  final Key? fieldKey;
+  final bool? isPasswordField;
+
   const MyInputField({
     super.key,
-    required this.hint
+    this.controller,
+    required this.hintText,
+    this.fieldKey,
+    this.isPasswordField
   });
 
   @override
+  State<MyInputField> createState() => _MyInputFieldState();
+}
+
+class _MyInputFieldState extends State<MyInputField> {
+  @override
   Widget build(BuildContext context) {
-    return  TextField(
+    bool _obscureText=widget.isPasswordField==true;
+    return  new TextFormField(
+      obscureText: _obscureText,
+      controller: widget.controller,
       autofocus: false,
       style: TextStyle(
         fontSize: 22.0, 
@@ -18,9 +33,9 @@ class MyInputField extends StatelessWidget {
       decoration: InputDecoration(
         filled: true,
         fillColor: Colors.white,
-        hintText: hint,
+        hintText: widget.hintText,
         contentPadding:
-            const EdgeInsets.symmetric(horizontal: 14.0, vertical: 3.0),
+            const EdgeInsets.symmetric(horizontal: 14.0, vertical: 1.0),
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(color: Colors.white),
           borderRadius: BorderRadius.circular(25.7),
@@ -29,7 +44,18 @@ class MyInputField extends StatelessWidget {
           borderSide: BorderSide(color: Colors.white),
           borderRadius: BorderRadius.circular(25.7),
         ),
+        // suffixIcon: new GestureDetector(
+        //     onTap: () {
+        //       setState(() {
+        //         _obscureText = !_obscureText;
+        //       });
+        //     },
+        //     child:AbsorbPointer(
+        //       child: (widget.isPasswordField==true)? Icon(_obscureText ? Icons.visibility_off : Icons.visibility, color: _obscureText == false ? Colors.blue : Colors.grey,) : Text(""),  
+        //     )
+        //   ),
       ),
+      
     );
   }
 }
