@@ -1,21 +1,11 @@
-import 'dart:io';
-
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:meuseum_guide/pages/login.dart';
 import 'package:meuseum_guide/pages/signup.dart';
-import 'package:meuseum_guide/widgets/common/text_input.dart';
-
+import 'package:meuseum_guide/services/firebase_options/firebase_options.dart';
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-    options: FirebaseOptions(
-      apiKey: "AIzaSyBHlahC75pF5hoEfycceqUPoBTayxPQ4Ec", 
-      appId: "1:185489267441:android:feec54376de8edf6e9e750",
-      messagingSenderId: "185489267441", 
-      projectId: "museum-guide0"
-    )
+    options: DefaultFirebaseOptions.currentPlatform,
   );
   runApp(const MyApp());
 }
