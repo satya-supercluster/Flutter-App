@@ -1,6 +1,8 @@
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:meuseum_guide/pages/signup.dart';
+import 'package:meuseum_guide/services/user_auth/firebase_auth_implementation/firebase_auth_services.dart';
 import 'package:meuseum_guide/widgets/common/text_input.dart';
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -11,7 +13,8 @@ class LoginPage extends StatefulWidget {
 
 
 class _LoginPageState extends State<LoginPage> {
-  var usernameController=TextEditingController();
+  final FirebaseAuthService _auth = FirebaseAuthService();
+  var emailController=TextEditingController();
   var passwordController=TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -47,7 +50,7 @@ class _LoginPageState extends State<LoginPage> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    MyInputField(hintText: "Username",controller: usernameController,),
+                    MyInputField(hintText: "Email",controller: emailController,),
                     SizedBox(height: 20,),
                     MyInputField(hintText: "Passwoird",controller: passwordController,isPasswordField: true,),
                     SizedBox(height:10),
@@ -75,7 +78,9 @@ class _LoginPageState extends State<LoginPage> {
                             foregroundColor: Colors.lightBlueAccent,
                             shadowColor: Colors.black,
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            _login();
+                          },
                         ),
                       ],
                     ),
@@ -154,6 +159,20 @@ class _LoginPageState extends State<LoginPage> {
         )
       )
     );
+  }
+  void _login()async{
+    String email=emailController.text;
+    String password=passwordController.text;
+
+    User? user =await _auth.signInWithEmailAndPassword(email, password);
+    if(user!=null){
+      print("User created");
+    }
+    else{
+      print("Some error happend");
+    }
+
+
   }
 }
  
