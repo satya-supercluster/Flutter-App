@@ -1,5 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:meuseum_guide/pages/appointments.dart';
+import 'package:meuseum_guide/pages/signup_clinic.dart';
 import 'package:meuseum_guide/pages/signup.dart';
 import 'package:meuseum_guide/services/firebase_options/firebase_options.dart';
 void main() async{
@@ -21,7 +23,7 @@ class MyApp extends StatelessWidget{
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: SignUpPage(),
+      home: SignUpClinic(),
     );
   }
 }

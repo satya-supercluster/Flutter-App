@@ -1,4 +1,4 @@
-import 'dart:math';
+// import 'dart:math';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -186,7 +186,6 @@ class _SignUpState extends State<SignUpPage> {
     String password=passwordController.text;
 
     User? user =await _auth.signUpWithEmailAndPassword(email, password);
-
     if(user!=null){
       print("User created");
     }
