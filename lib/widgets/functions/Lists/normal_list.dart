@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:meuseum_guide/widgets/functions/Lists/tile/newtile.dart';
 import 'package:meuseum_guide/widgets/functions/Lists/tile/tiles.dart';
 
 class NormalList extends StatefulWidget {
