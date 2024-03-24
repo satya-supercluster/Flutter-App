@@ -107,27 +107,27 @@ class _SignUpClinicState extends State<SignUpClinic> {
                     SizedBox(height: 80,),
                     Column(
                       children: [
-                        Container(
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.all(Radius.circular(27.5)),
-                          ),
-                          child:Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              InkWell(
-                                onTap: (){
-                                  Navigator.of(context).push(MaterialPageRoute(builder: (context)=>AppointmentPage()));
-                                },
-                                child: Container(
+                        InkWell(
+                          onTap:(){
+                            Navigator.of(context).push(MaterialPageRoute(builder: (context)=>AppointmentPage()));
+                          },
+                          child: Container(
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.all(Radius.circular(27.5)),
+                            ),
+                            child:Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Container(
                                   padding: EdgeInsets.only(top:8,bottom: 8),
                                   child: Text("Sign Up",style: TextStyle(color: Colors.red,fontSize: 20,fontWeight: FontWeight.bold),)
                                 ),
-                              ),
-                            ],
-                          )
+                              ],
+                            )
+                          ),
                         ),
                         SizedBox(height: 10,),
                         Row(

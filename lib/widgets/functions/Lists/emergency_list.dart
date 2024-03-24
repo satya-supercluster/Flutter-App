@@ -1,15 +1,16 @@
 import 'package:flutter/cupertino.dart';
+import 'package:meuseum_guide/widgets/functions/Lists/tile/normal_expanded_tile.dart';
 
-class EmergrncyList extends StatefulWidget {
-  const EmergrncyList({super.key});
+class EmergencyList extends StatefulWidget {
+  const EmergencyList({super.key});
 
   @override
-  State<EmergrncyList> createState() => _EmergrncyListState();
+  State<EmergencyList> createState() => _EmergencyListState();
 }
 
-class _EmergrncyListState extends State<EmergrncyList> {
+class _EmergencyListState extends State<EmergencyList> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return ExpandedAppointmentTileNormal();
   }
 }

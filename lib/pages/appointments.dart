@@ -4,6 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:meuseum_guide/widgets/functions/Lists/emergency_list.dart';
+import 'package:meuseum_guide/widgets/functions/Lists/normal_list.dart';
 
 class AppointmentPage extends StatefulWidget {
   const AppointmentPage({super.key});
@@ -19,98 +21,100 @@ class _AppointmentPageState extends State<AppointmentPage> {
     return Scaffold(
       // backgroundColor: Colors.white,
       body:SafeArea(
-        child: SingleChildScrollView(
-          child: Container(
-            child:Column(
-              children: [
-                SizedBox(height:20),
-                Row(
-                  children: [
-                    SizedBox(width: 30,),
-                    Text("Welcome Back!",style:TextStyle(color: Colors.grey[600],fontWeight: FontWeight.w500,fontSize: 15))
-                  ],
-                ),
-                Row(
-                  children: [
-                    SizedBox(width: 30,),
-                    Text("Appointments",style:TextStyle(color: Color.fromARGB(255, 41, 7, 233),fontWeight: FontWeight.w600,fontSize: 24))
-                  ],
-                ),
-                Container(
-                  margin: EdgeInsets.symmetric(vertical: 10),
-                  decoration: BoxDecoration(
-                    border:Border(
-                      bottom: BorderSide(
-                      width:1,
-                      color: Color.fromARGB(255, 99, 97, 97)
-                    ),
-                      top:BorderSide(
-                      width:1,
-                      color: Color.fromARGB(255, 99, 97, 97)
-                    ),
-                      ),
+        child: Container(
+          child:Column(
+            children: [
+              SizedBox(height:20),
+              Row(
+                children: [
+                  SizedBox(width: 30,),
+                  Text("Welcome Back!",style:TextStyle(color: Colors.grey[600],fontWeight: FontWeight.w500,fontSize: 15))
+                ],
+              ),
+              Row(
+                children: [
+                  SizedBox(width: 30,),
+                  Text("Appointments",style:TextStyle(color: Color.fromARGB(255, 41, 7, 233),fontWeight: FontWeight.w600,fontSize: 24))
+                ],
+              ),
+              Container(
+                margin: EdgeInsets.symmetric(vertical: 10),
+                decoration: BoxDecoration(
+                  border:Border(
+                    bottom: BorderSide(
+                    width:1,
+                    color: Color.fromARGB(255, 99, 97, 97)
                   ),
-                  child:Row(
-                    children:[
-                      Container(
-                        padding: EdgeInsets.symmetric(vertical: 5),
-                        decoration: BoxDecoration(
-                          color: (emergency==false)?Color.fromARGB(255, 253, 202, 200):Colors.white,
-                          border:Border(
-                            bottom: BorderSide(
-                            width:3,
-                            color:(emergency==false)?Color.fromARGB(255, 236, 36, 22):Colors.white ,
-                          ),)
+                    top:BorderSide(
+                    width:1,
+                    color: Color.fromARGB(255, 99, 97, 97)
+                  ),
+                    ),
+                ),
+                child:Row(
+                  children:[
+                    Container(
+                      padding: EdgeInsets.symmetric(vertical: 5),
+                      decoration: BoxDecoration(
+                        color: (emergency==false)?Color.fromARGB(255, 253, 202, 200):Colors.white,
+                        border:Border(
+                          bottom: BorderSide(
+                          width:3,
+                          color:(emergency==false)?Color.fromARGB(255, 236, 36, 22):Colors.white ,
+                        ),)
+                      ),
+                      width:MediaQuery.of(context).size.width/2,
+                      child:InkWell(
+                        onTap: ()=>{
+                          setState(() {
+                            emergency=false;
+                          })
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text("Normal",style:TextStyle(fontSize: 20,fontWeight: FontWeight.w500,color:(emergency==false)?Colors.red:Colors.grey[600],)),
+                          ],
                         ),
-                        width:MediaQuery.of(context).size.width/2,
-                        child:InkWell(
-                          onTap: ()=>{
-                            setState(() {
-                              emergency=false;
-                            })
-                          },
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Text("Normal",style:TextStyle(fontSize: 20,fontWeight: FontWeight.w500,color:(emergency==false)?Colors.red:Colors.grey[600],)),
-                            ],
+                      )
+                    ),
+                    Container(
+                      padding: EdgeInsets.symmetric(vertical: 5),
+                      decoration: BoxDecoration(
+                        color: (emergency==true)?Color.fromARGB(255, 253, 202, 200):Colors.white,
+                        border:Border(
+                          bottom: BorderSide(
+                          width:3,
+                          color:(emergency==true)?Color.fromARGB(255, 236, 36, 22):Colors.white ,
                           ),
                         )
                       ),
-                      Container(
-                        padding: EdgeInsets.symmetric(vertical: 5),
-                        decoration: BoxDecoration(
-                          color: (emergency==true)?Color.fromARGB(255, 253, 202, 200):Colors.white,
-                          border:Border(
-                            bottom: BorderSide(
-                            width:3,
-                            color:(emergency==true)?Color.fromARGB(255, 236, 36, 22):Colors.white ,
-                            ),
-                          )
+                      width:MediaQuery.of(context).size.width/2,
+                      child:InkWell(
+                        onTap: ()=>{
+                          setState(() {
+                            emergency=true;
+                          })
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text("Emergency",style:TextStyle(fontSize: 20,fontWeight: FontWeight.w500,color:(emergency==true)?Colors.red:Colors.grey[600],)),
+                          ],
                         ),
-                        width:MediaQuery.of(context).size.width/2,
-                        child:InkWell(
-                          onTap: ()=>{
-                            setState(() {
-                              emergency=true;
-                            })
-                          },
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Text("Emergency",style:TextStyle(fontSize: 20,fontWeight: FontWeight.w500,color:(emergency==true)?Colors.red:Colors.grey[600],)),
-                            ],
-                          ),
-                        )
-                      ),
-                    ]
-                  )
+                      )
+                    ),
+                  ]
                 )
-              ],
-            )
-          ),
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(vertical: 10,horizontal: 20),
+                child: (emergency==true)?EmergencyList():NormalList(),
+              )
+            ],
+          )
         ),
       ),
       bottomNavigationBar:Container(
