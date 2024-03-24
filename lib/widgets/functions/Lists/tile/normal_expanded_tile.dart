@@ -3,7 +3,27 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class ExpandedAppointmentTileNormal extends StatefulWidget {
-  const ExpandedAppointmentTileNormal({super.key});
+    String name;
+    String age;
+    String place;
+    String gender;
+    String day;
+    String month;
+    String year;
+    String start;
+    String end;
+  ExpandedAppointmentTileNormal({
+    super.key,
+    required this.name,
+    required this.day,
+    required this.month,
+    required this.year,
+    required this.age,
+    required this.place,
+    required this.gender,
+    required this.start,
+    required this.end
+  });
 
   @override
   State<ExpandedAppointmentTileNormal> createState() => _ExpandedAppointmentTileNormalState();
@@ -48,7 +68,7 @@ class _ExpandedAppointmentTileNormalState extends State<ExpandedAppointmentTileN
                         children: [
                           Icon(Icons.alarm,size:20,color:Colors.white),
                           SizedBox(width:5),
-                          Text("21 Aug 2024, 11:00am-11:30am",style:TextStyle(fontSize: 15,color: Colors.white))
+                          Text(widget.day+" "+widget.month+" "+widget.year+", "+widget.start+"-"+widget.end,style:TextStyle(fontSize: 15,color: Colors.white))
                         ],
                       )
                     ],
@@ -85,24 +105,24 @@ class _ExpandedAppointmentTileNormalState extends State<ExpandedAppointmentTileN
                               children: [
                                 Row(
                                   children: [
-                                    Text("Satyam Gupta",style:TextStyle(fontSize: 16,fontWeight: FontWeight.w600,color: Colors.black))
+                                    Text(widget.name,style:TextStyle(fontSize: 16,fontWeight: FontWeight.w600,color: Colors.black))
                                   ],
                                 ),
                                 Row(
                                   children: [
                                     Container(
-                                      child:Text("Age:19",style:TextStyle(fontSize: 10,fontWeight: FontWeight.w600,color: Colors.black54)),
+                                      child:Text("Age:"+widget.age,style:TextStyle(fontSize: 10,fontWeight: FontWeight.w600,color: Colors.black54)),
                                     ),
                                     SizedBox(width:10),
                                     Container(
-                                      child:Text("Gender:Male",style:TextStyle(fontSize: 10,fontWeight: FontWeight.w600,color: Colors.black54)),
+                                      child:Text("Gender:"+widget.gender,style:TextStyle(fontSize: 10,fontWeight: FontWeight.w600,color: Colors.black54)),
                                     ),
                                   ],
                                 ),
                                 Row(
                                   children: [
                                     Container(
-                                      child:Text("Place:Lucknow",style:TextStyle(fontSize: 10,fontWeight: FontWeight.w600,color: Colors.black54)),
+                                      child:Text("Place:"+widget.place,style:TextStyle(fontSize: 10,fontWeight: FontWeight.w600,color: Colors.black54)),
                                     ),
                                   ],
                                 )

@@ -109,9 +109,11 @@ class _AppointmentPageState extends State<AppointmentPage> {
                   ]
                 )
               ),
-              Container(
-                padding: EdgeInsets.symmetric(vertical: 10,horizontal: 20),
-                child: (emergency==true)?EmergencyList():NormalList(),
+              Expanded(
+                child: Container(
+                  padding: EdgeInsets.symmetric(vertical: 10,horizontal: 20),
+                  child: (emergency==true)?EmergencyList():NormalList(),
+                ),
               )
             ],
           )
