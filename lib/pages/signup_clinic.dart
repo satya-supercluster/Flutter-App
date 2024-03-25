@@ -95,9 +95,9 @@ class _SignUpClinicState extends State<SignUpClinic> {
                     SizedBox(height: 10,),
                     Column(
                       children: [
-                        InputData(hintText:"Full Name",prefixIcon: Icons.person_outline,),
+                        InputData(hintText:"Full Name",prefixIcon: Icons.person_outline),
                         SizedBox(height:10),
-                        InputData(hintText:"Email",prefixIcon: Icons.email,),
+                        InputData(hintText:"Email",prefixIcon: Icons.email),
                         SizedBox(height:10),
                         InputData(hintText:"Password",prefixIcon: Icons.lock,isPasswordField: true,),
                         SizedBox(height:10),

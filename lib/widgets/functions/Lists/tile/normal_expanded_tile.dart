@@ -3,16 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class ExpandedAppointmentTileNormal extends StatefulWidget {
-    String name;
-    String age;
-    String place;
-    String gender;
-    String day;
-    String month;
-    String year;
-    String start;
-    String end;
-  ExpandedAppointmentTileNormal({
+  final  String name;
+  final  String age;
+  final  String place;
+  final  String gender;
+  final  String day;
+  final  String month;
+  final  String year;
+  final  String start;
+  final  String end;
+  const ExpandedAppointmentTileNormal({
     super.key,
     required this.name,
     required this.day,

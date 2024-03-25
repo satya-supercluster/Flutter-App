@@ -57,13 +57,16 @@ class _InputDataState extends State<InputData> {
           color: Colors.grey,
           size: 20,
         ),
-        suffixIcon: new GestureDetector(
+        suffixIcon:GestureDetector(
             onTap: () {
               setState(() {
+                print(_obscureText);
                 _obscureText = !_obscureText;
+                print(_obscureText);
               });
             },
             child:AbsorbPointer(
+              // absorbing: widget.isPasswordField??false,
               child: (widget.isPasswordField==true)? Icon(_obscureText ? Icons.visibility_off : Icons.visibility, color: _obscureText == false ? Colors.blue : Colors.grey,) : Text(""),  
             )
           ),

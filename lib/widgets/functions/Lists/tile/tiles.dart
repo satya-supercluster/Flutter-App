@@ -4,16 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class AppointmentTiles extends StatefulWidget {
-  String name;
-  String age;
-  String place;
-  String gender;
-  String day;
-  String month;
-  String year;
-  String start;
-  String end;
-  AppointmentTiles({
+  final String name;
+  final String age;
+  final String place;
+  final String gender;
+  final String day;
+  final String month;
+  final String year;
+  final String start;
+  final String end;
+  const AppointmentTiles({
     super.key,
     required this.name,
     required this.day,
@@ -35,7 +35,7 @@ class _AppointmentTilesState extends State<AppointmentTiles> {
   Widget build(BuildContext context) {
     return Container(
       width:MediaQuery.of(context).size.width,
-      height:60,
+      height:70,
       clipBehavior: Clip.hardEdge,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(14),
