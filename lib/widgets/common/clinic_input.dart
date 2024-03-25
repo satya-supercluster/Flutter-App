@@ -23,9 +23,14 @@ class InputData extends StatefulWidget {
 }
 
 class _InputDataState extends State<InputData> {
+  late bool _obscureText=false;
+  @override
+  void initState(){
+    super.initState();
+    _obscureText=widget.isPasswordField==true;
+  }
   @override
   Widget build(BuildContext context) {
-    bool _obscureText=widget.isPasswordField==true;
     return  new TextFormField(
       textAlignVertical: TextAlignVertical.center,
       cursorColor: Colors.black,

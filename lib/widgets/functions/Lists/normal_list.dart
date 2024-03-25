@@ -12,6 +12,14 @@ class NormalList extends StatefulWidget {
 }
 
 class _NormalListState extends State<NormalList> {
+  Map<int,bool>myMap={};
+    @override
+    void initState() {
+      super.initState();
+      for (int i = 0; i < 17; i++) {
+        myMap[i] = false;
+      }
+    }
   @override
   Widget build(BuildContext context) {
     List<Map<String,String>>list=[
@@ -70,7 +78,7 @@ class _NormalListState extends State<NormalList> {
     //     myMap[i]=false;
     //   });
     // }
-    var myMap={for (int i=0;i<list.length;i++) i:false};
+    // var myMap={for (int i=0;i<list.length;i++) i:false};
     return ListView.builder(
       itemCount: list.length,
       shrinkWrap: true,
@@ -81,13 +89,12 @@ class _NormalListState extends State<NormalList> {
           onTap:()=>{
             setState(() {
               print(myMap[index]);
-              // if(myMap[index]==true){
-              //   myMap[index]=false;
-              // }
-              // else {
-              //   myMap[index]=true;
-              // }
-              myMap[index]=true;
+              if(myMap[index]==true){
+                myMap[index]=false;
+              }
+              else {
+                myMap[index]=true;
+              }
             }),
             print(myMap[index])
           },          
